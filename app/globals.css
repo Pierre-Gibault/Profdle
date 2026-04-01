@@ -14,7 +14,7 @@ body {
 .guess-table {
   border: 2px solid black;
   border-radius: 14px;
-  margin: 10rem;
+  margin: 4rem 10rem 10rem 10rem;
   border-collapse: separate;
   border-spacing: 1rem;
 }

@@ -19,6 +19,7 @@ export default function Home() {
     Professor[]
   >([]);
   const [showDropdown, setShowDropdown] = React.useState(false);
+  const [showWinModal, setShowWinModal] = React.useState(false);
 
   async function fetchData() {
     try {
@@ -61,8 +62,9 @@ export default function Home() {
     setInputValue(professor.name);
     setShowDropdown(false);
     setGuessedProfessors([...guessedProfessors, professor]);
+    setInputValue("");
     if (isSelectedDailyProfessor(professor)) {
-      alert("Congratulations! You guessed the daily professor!");
+      setShowWinModal(true);
     }
   };
 
@@ -74,8 +76,9 @@ export default function Home() {
       if (selected) {
         setGuessedProfessors([...guessedProfessors, selected]);
         setShowDropdown(false);
+        setInputValue("");
         if (isSelectedDailyProfessor(selected)) {
-          alert("Congratulations! You guessed the daily professor!");
+          setShowWinModal(true);
         }
       }
     }
@@ -83,72 +86,147 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-        <div style={{ border: "2px solid #ccc", borderRadius: "8px", padding: "16px", width: "300px", position: "relative" }}>
-          <div style={{ display: "flex", gap: "8px" }}>
-        <input
-          type="text"
-          placeholder="Enter professor name"
-          value={inputValue}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyPress}
-          style={{ flex: 1, padding: "8px", border: "1px solid #ddd", borderRadius: "4px" }}
-        />
-        <button
-          onClick={() => {
-        const selected = professorList.find(
-          (prof) => prof.name.toLowerCase() === inputValue.toLowerCase(),
-        );
-        if (selected) {
-          setGuessedProfessors([...guessedProfessors, selected]);
-          setShowDropdown(false);
-          setInputValue("");
-          if (isSelectedDailyProfessor(selected)) {
-        alert("Congratulations! You guessed the daily professor!");
-          }
-        }
+      {showWinModal && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.45)",
+            zIndex: 1000,
           }}
-          style={{ padding: "8px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}
         >
-          Submit
-        </button>
+          <div
+            style={{
+              backgroundColor: "#fff",
+              padding: "24px 32px",
+              borderRadius: "12px",
+              textAlign: "center",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
+              maxWidth: "90%",
+            }}
+          >
+            <p style={{ fontSize: "1.5rem", margin: "0 0 12px 0" }}>
+              🎉 Bien joué ! Tu as trouvé le professeur du jour ! 🎉<br/>🎉 Reviens demain pour un professeur different ! 🎉
+            </p>
+            <button
+              onClick={() => window.location.href = "https://youtu.be/dQw4w9WgXcQ"}
+              style={{
+                border: "none",
+                borderRadius: "6px",
+                padding: "8px 16px",
+                cursor: "pointer",
+                backgroundColor: "#333",
+                color: "#fff",
+              }}
+            >
+              Recommencer !
+            </button>
           </div>
-          {showDropdown && filteredProfessors.length > 0 && (
-        <ul style={{ listStyle: "none", padding: "8px 0", margin: "0", marginTop: "8px", border: "1px solid #ddd", borderRadius: "4px", maxHeight: "200px", overflow: "auto", position: "absolute", top: "100%", left: "0", right: "0", zIndex: 10 }}>
-          {filteredProfessors.map((prof) => (
-        <li key={prof.name} onClick={() => handleSelectProfessor(prof)} style={{ padding: "8px", cursor: "pointer", borderBottom: "1px solid #eee" }}>
-          {prof.name}
-        </li>
-          ))}
-        </ul>
-          )}
+        </div>
+      )}
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "20px",
+        }}
+      >
+        <div
+          style={{
+            border: "2px solid #ccc",
+            borderRadius: "8px",
+            padding: "16px",
+            position: "relative",
+            marginTop: "3rem"
+          }}
+        >
+            <div style={{ display: "flex", padding: "1rem" }}>
+            <input
+              type="text"
+              placeholder="Entrer le nom d'un prof"
+              value={inputValue}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyPress}
+              style={{
+              flex: 1,
+              padding: "8px",
+              border: "1px solid #333",
+              borderRadius: "4px",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              }}
+            />
+            </div>
+            {showDropdown && filteredProfessors.length > 0 && (
+            <ul
+              style={{
+              listStyle: "none",
+              padding: "8px 0",
+              margin: "0",
+              marginTop: "8px",
+              border: "1px solid #333",
+              borderRadius: "4px",
+              maxHeight: "200px",
+              overflow: "auto",
+              position: "absolute",
+              top: "100%",
+              left: "0",
+              right: "0",
+              zIndex: 10,
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              }}
+            >
+              {filteredProfessors.map((prof) => (
+              <li
+                key={prof.name}
+                onClick={() => handleSelectProfessor(prof)}
+                style={{
+                padding: "8px",
+                cursor: "pointer",
+                borderBottom: "1px solid #eee",
+                }}
+              >
+                {prof.name}
+              </li>
+              ))}
+            </ul>
+            )}
         </div>
       </div>
 
       <table className="guess-table">
         <thead>
-        <tr>
-          <th>Image</th>
-          <th>Nom</th>
-          <th>Matière</th>
-          <th>UTBM (pas UIMM)</th>
-          <th>Note</th>
-          <th>Difficulté de la matière</th>
-          <th>Semestre</th>
-        </tr>
+          <tr>
+            <th>Image</th>
+            <th>Nom</th>
+            <th>Matière</th>
+            <th>UTBM (pas UIMM)</th>
+            <th>Note</th>
+            <th>Difficulté de la matière</th>
+            <th>Semestre</th>
+          </tr>
         </thead>
         <tbody>
-        {guessedProfessors.length === 0 ? (
-          <tr>
-            <td colSpan={7} style={{ textAlign: "center", padding: "20px" }}>
-              Guess something...
-            </td>
-          </tr>
-        ) : (
-          guessedProfessors.map((professor) => (
-            <GuessCard key={professor.name} professor={professor} professorToGuess={dailyProfessors} />
-          )).reverse()
-        )}
+          {guessedProfessors.length === 0 ? (
+            <tr>
+              <td colSpan={7} style={{ textAlign: "center", padding: "20px" }}>
+                Guess something...
+              </td>
+            </tr>
+          ) : (
+            guessedProfessors
+              .map((professor) => (
+                <GuessCard
+                  key={professor.name}
+                  professor={professor}
+                  professorToGuess={dailyProfessors}
+                />
+              ))
+              .reverse()
+          )}
         </tbody>
       </table>
     </>
