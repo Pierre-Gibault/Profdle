@@ -36,7 +36,7 @@ jobs:
       - name: Ensure professors.json is in export
         run: |
           mkdir -p out
-          cp -f public/professors.json out/professors.json
+          cp -f public/* out/*
           # optional: ensure images exist too
           cp -r public/images out/images || true
           ls -la out
