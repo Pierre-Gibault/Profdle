@@ -7,11 +7,16 @@ type GuessCardProps = {
 };
 
 export default function GuessCard({ professor, professorToGuess }: GuessCardProps) {
+  const basePath = process.env.NODE_ENV === "production" ? "/Profdle" : "";
+  const imageSrc = professor.picturePath.startsWith("/")
+    ? `${basePath}${professor.picturePath}`
+    : professor.picturePath;
+
   return (
     <tr className="guess-row">
       <td>
         <Image
-          src={professor.picturePath}
+          src={imageSrc}
           alt={professor.name}
           width={64}
           height={64}
