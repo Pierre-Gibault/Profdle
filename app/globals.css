@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --yellow-background: url(../public/yellow-bg.svg) center/cover no-repeat;
+  --yellow-background: url(../public/yellow-bg.svg) center/cover ;
 }
 
 

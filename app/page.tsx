@@ -86,6 +86,16 @@ export default function Home() {
 
   return (
     <>
+
+      <p style={{ textAlign: "center", margin: "2rem 5rem 0rem 5rem", fontSize: "1.25rem", border: "solid 4px red", borderRadius: "14px" }}>
+        Le jeu est simple : tu dois deviner le professeur du jour en entrant son nom dans la barre de recherche. Chaque fois que tu fais une proposition, tu obtiens des indices sur sa matière, son établissement, sa note, la difficulté de sa matière et les semestres où il enseigne.
+        <br/>
+        <br/>
+        Si la case est en rouge, cela signifie que l'information est complètement fausse. Si elle est en jaune, cela signifie que l'information est partiellement correcte. Si elle est en vert, cela signifie que l'information est correcte à 100% !
+        <br/>
+        Bonne chance !
+      </p>
+
       {showWinModal && (
         <div
           style={{
@@ -203,7 +213,7 @@ export default function Home() {
             <th>Image</th>
             <th>Nom</th>
             <th>Matière</th>
-            <th>UTBM (pas UIMM)</th>
+            <th>Établissement</th>
             <th>Note</th>
             <th>Difficulté de la matière</th>
             <th>Semestre</th>

@@ -38,7 +38,7 @@ export default function GuessCard({ professor, professorToGuess }: GuessCardProp
       {professor.subject.map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(", ")}
     </td>
     <td className={`border-2 bg-opacity-50 ${professorToGuess && professorToGuess.isUTBM === professor.isUTBM ? "border-green-500 bg-green-500" : "border-red-500 bg-red-500"}`}>
-      {professor.isUTBM ? "UTBM" : "Not UTBM"}
+      {professor.isUTBM ? "UTBM" : "UIMM"}
     </td>
     <td className={`border-2 bg-opacity-50 ${
       professorToGuess
