@@ -1,38 +1,74 @@
 [
     {
-        "picturePath": "/images/professors/prof.jpg",
-        "name": "Dr. Alice Johnson",
-        "subject": ["Mathematics", "Calculus"],
+        "picturePath": "/images/professors/Lamrous.jpg",
+        "name": "Sid Ahmed LAMROUS",
+        "subject": ["BD70", "PR71"],
         "isUTBM": true,
-        "rating": 4,
-        "difficulty": 3,
-        "semesters": [1, 2, 3]
+        "rating": 10,
+        "difficulty": 7,
+        "semesters": [2]
     },
     {
-        "picturePath": "/images/professors/prof.jpg",
-        "name": "Prof. Bob Smith",
-        "subject": ["Physics", "Mechanics"],
+        "picturePath": "/images/professors/Mahjoub.webp",
+        "name": "Mahjoub DRIDI",
+        "subject": ["SR70", "SR71", "IA70"],
         "isUTBM": true,
-        "rating": 2,
+        "rating": 5,
+        "difficulty": 5,
+        "semesters": [1,2]
+    },
+    {
+        "picturePath": "/images/professors/KAS.jpg",
+        "name": "Mohamed KAS",
+        "subject": ["SR72", "PR71"],
+        "isUTBM": true,
+        "rating": 8,
+        "difficulty": 6,
+        "semesters": [2]
+    },
+    {
+        "picturePath": "/images/professors/Toussou.jpg",
+        "name": "Francis TOSSOU",
+        "subject": ["SR74"],
+        "isUTBM": true,
+        "rating": 10,
         "difficulty": 4,
-        "semesters": [2, 4]
+        "semesters": [2]
     },
     {
-        "picturePath": "/images/professors/prof.jpg",
-        "name": "Dr. Carol Davis",
-        "subject": ["Computer Science", "Algorithms"],
-        "isUTBM": false,
-        "rating": 4,
-        "difficulty": 2,
-        "semesters": [1, 3, 5]
-    },
-    {
-        "picturePath": "/images/professors/prof.jpg",
-        "name": "Prof. David Wilson",
-        "subject": ["Chemistry"],
+        "picturePath": "/images/professors/Benkirane.jpg",
+        "name": "Fatima Ez Zahra BENKIRANE",
+        "subject": ["PR70"],
         "isUTBM": true,
-        "rating": 3,
+        "rating": 7,
+        "difficulty": 5,
+        "semesters": [1]
+    },
+    {
+        "picturePath": "/images/professors/Cisterne.jpg",
+        "name": "Audrey CISTERNE",
+        "subject": ["ST72", "TI72", "TI73"],
+        "isUTBM": false,
+        "rating": 10,
         "difficulty": 3,
-        "semesters": [2, 3, 4]
+        "semesters": [1,2]
+    },
+    {
+        "picturePath": "/images/professors/Rocheteau.jpg",
+        "name": "Florent ROCHETEAU",
+        "subject": ["MT02","MT03","MT04","ST72"],
+        "isUTBM": false,
+        "rating": 8,
+        "difficulty": 9,
+        "semesters": [1,2]
+    },
+    {
+        "picturePath": "/images/professors/Rocheteau.jpg",
+        "name": "M. LAUZET",
+        "subject": ["GE78", "GE79"],
+        "isUTBM": false,
+        "rating": 5,
+        "difficulty": 4,
+        "semesters": [1,2]
     }
 ]

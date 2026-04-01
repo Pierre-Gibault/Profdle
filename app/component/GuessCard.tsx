@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Professor } from "../Model/professor";
+import React from "react";
 
 type GuessCardProps = {
   professor: Professor;
@@ -8,19 +9,39 @@ type GuessCardProps = {
 
 export default function GuessCard({ professor, professorToGuess }: GuessCardProps) {
   const basePath = process.env.NODE_ENV === "production" ? "/Profdle" : "";
-  const imageSrc = professor.picturePath.startsWith("/")
-    ? `${basePath}${professor.picturePath}`
-    : professor.picturePath;
+  const resolvePath = React.useCallback(
+    (path: string) => (path.startsWith("/") ? `${basePath}${path}` : path),
+    [basePath],
+  );
+
+  const defaultImageSrc = React.useMemo(
+    () => resolvePath("/images/professors/anonyme.webp"),
+    [resolvePath],
+  );
+  const initialImageSrc = React.useMemo(
+    () => resolvePath(professor.picturePath || "/images/professors/anonyme.webp"),
+    [resolvePath, professor.picturePath],
+  );
+  const [currentImageSrc, setCurrentImageSrc] = React.useState(initialImageSrc);
+
+  React.useEffect(() => {
+    setCurrentImageSrc(initialImageSrc);
+  }, [initialImageSrc]);
 
   return (
     <tr className="guess-row">
       <td>
         <Image
-          src={imageSrc}
+          src={currentImageSrc}
           alt={professor.name}
           width={64}
           height={64}
           className="rounded mx-auto"
+          onError={() => {
+            if (currentImageSrc !== defaultImageSrc) {
+              setCurrentImageSrc(defaultImageSrc);
+            }
+          }}
         />
       </td>
     <td className={`border-2 bg-opacity-50 ${professorToGuess && professorToGuess.name === professor.name ? "border-green-500  bg-green-500" : "border-red-500  bg-red-500"}`}>
