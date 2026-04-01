@@ -22,7 +22,7 @@ export default function Home() {
 
   async function fetchData() {
     try {
-      const response = await fetch("/professors.json");
+      const response = await fetch("professors.json");
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       const data: Professor[] = await response.json();
