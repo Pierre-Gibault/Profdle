@@ -63,7 +63,7 @@
         "semesters": [1,2]
     },
     {
-        "picturePath": "/images/professors/Rocheteau.jpg",
+        "picturePath": "/images/professors/Lauzet.jpg",
         "name": "M. LAUZET",
         "subject": ["GE78", "GE79"],
         "isUTBM": false,
