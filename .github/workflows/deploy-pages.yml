@@ -36,9 +36,16 @@ jobs:
       - name: Ensure professors.json is in export
         run: |
           mkdir -p out
-          cp -a public/. out/
+          cp -f public/professors.json out/professors.json
+          # optional: ensure images exist too
+          cp -r public/images out/images || true
           ls -la out
           ls -la out/images || true
+      - name: Add prof pictures to export
+        run: |
+          mkdir -p out/images
+          cp -r public/images/professors out/images/professors || true
+          ls -la out/images/professors || true
 
       - name: Verify export folder
         run: |
