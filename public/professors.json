@@ -1,0 +1,38 @@
+[
+    {
+        "picturePath": "/images/professors/prof.jpg",
+        "name": "Dr. Alice Johnson",
+        "subject": ["Mathematics", "Calculus"],
+        "isUTBM": true,
+        "rating": 4,
+        "difficulty": 3,
+        "semesters": [1, 2, 3]
+    },
+    {
+        "picturePath": "/images/professors/prof.jpg",
+        "name": "Prof. Bob Smith",
+        "subject": ["Physics", "Mechanics"],
+        "isUTBM": true,
+        "rating": 2,
+        "difficulty": 4,
+        "semesters": [2, 4]
+    },
+    {
+        "picturePath": "/images/professors/prof.jpg",
+        "name": "Dr. Carol Davis",
+        "subject": ["Computer Science", "Algorithms"],
+        "isUTBM": false,
+        "rating": 4,
+        "difficulty": 2,
+        "semesters": [1, 3, 5]
+    },
+    {
+        "picturePath": "/images/professors/prof.jpg",
+        "name": "Prof. David Wilson",
+        "subject": ["Chemistry"],
+        "isUTBM": true,
+        "rating": 3,
+        "difficulty": 3,
+        "semesters": [2, 3, 4]
+    }
+]
