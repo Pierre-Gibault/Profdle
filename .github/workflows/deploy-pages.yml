@@ -34,7 +34,12 @@ jobs:
         run: npm run build
 
       - name: Verify export folder
-        run: test -d out && ls -la out
+        run: |
+          if [ ! -d out ]; then
+            echo "Missing ./out. Configure Next.js static export (output: 'export') or run next export."
+            exit 1
+          fi
+          ls -la out
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
