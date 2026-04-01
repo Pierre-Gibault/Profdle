@@ -33,10 +33,23 @@ jobs:
       - name: Build static site
         run: npm run build
 
+      - name: Ensure professors.json is in export
+        run: |
+          mkdir -p out
+          cp -f public/professors.json out/professors.json
+          # optional: ensure images exist too
+          cp -r public/images out/images || true
+          ls -la out
+          ls -la out/images || true
+
       - name: Verify export folder
         run: |
           if [ ! -d out ]; then
             echo "Missing ./out. Configure Next.js static export (output: 'export') or run next export."
+            exit 1
+          fi
+          if [ ! -f out/professors.json ]; then
+            echo "Missing out/professors.json"
             exit 1
           fi
           ls -la out
